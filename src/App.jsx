@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import WhatsAppWidget from './components/WhatsAppWidget';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import AboutPage from './pages/AboutPage';
@@ -54,6 +55,7 @@ export default function App() {
           </main>
         </div>
         <Footer />
+        <WhatsAppWidget />
       </div>
     </BrowserRouter>
   );

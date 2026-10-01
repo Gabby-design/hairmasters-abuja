@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, MapPin, Phone } from 'lucide-react';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +15,32 @@ export default function Navigation() {
 
   return (
     <header className="border-b border-ink/15 sticky top-0 z-50 bg-background/98 backdrop-blur-md shadow-xs">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-6 sm:py-5">
+      {/* Top Utility Ribbon */}
+      <div className="border-b border-stone-200/60 bg-[#1C1917] px-4 py-1.5 text-[11px] text-stone-300 sm:px-6">
+        <div className="mx-auto flex max-w-6xl items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span className="flex items-center gap-1.5 text-stone-200">
+              <MapPin className="h-3 w-3 text-rose" />
+              <span>53b Euphrates Crescent, off Aguiyi Ironsi St, Wuse II, Abuja</span>
+            </span>
+            <span className="hidden sm:inline text-stone-600">|</span>
+            <span className="hidden sm:inline-block text-stone-300 font-medium">
+              Mon – Sat: 9:00 AM – 7:30 PM · Sun: 12:00 PM – 6:00 PM (By Appt)
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <a
+              href="tel:08173445612"
+              className="flex items-center gap-1.5 font-medium hover:text-white transition-colors"
+            >
+              <Phone className="h-3 w-3 text-rose" />
+              <span>0817 344 5612</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-6 sm:py-4">
         
         {/* Brand Title */}
         <Link to="/" className="font-serif text-2xl sm:text-3xl tracking-normal text-[#1C1917] font-normal">

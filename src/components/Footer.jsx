@@ -29,9 +29,9 @@ export default function Footer() {
           ))}
         </nav>
 
-        {/* Copyright */}
-        <p className="text-xs text-[#1C1917] font-medium">
-          © 2026 Hair Masters Salon · 53b Euphrates Crescent, Wuse, Abuja
+        {/* Copyright & Location */}
+        <p className="text-xs text-[#1C1917] font-medium text-center sm:text-right">
+          © 2026 Hair Masters Salon · 53b Euphrates Crescent, off Aguiyi Ironsi St, Wuse II, Abuja · Mon – Sat: 9:00 AM – 7:30 PM
         </p>
 
       </div>
