@@ -69,15 +69,15 @@ export default function BookingPage() {
       return;
     }
 
-    const whatsappNumber = clientDetails.whatsapp || clientDetails.phone;
-    const whatsappMessage = encodeURIComponent(
-      `Hello Hair Masters Salon (Wuse II, Abuja)!\n\nI would like to confirm my appointment:\n\n*Service:* ${selectedServiceObj?.title} (${selectedServiceObj?.price})\n*Duration:* ${selectedServiceObj?.duration}\n*Date:* ${selectedDate}\n*Time:* ${selectedTime}\n*Client Name:* ${clientDetails.fullName}\n*Phone:* ${clientDetails.phone}\n*WhatsApp:* ${whatsappNumber}${clientDetails.notes ? `\n*Notes:* ${clientDetails.notes}` : ''}`
-    );
-
-    const whatsappUrl = `https://wa.me/2348173445612?text=${whatsappMessage}`;
+    const selectedService = selectedServiceObj?.title || 'Hair Styling';
+    const clientName = clientDetails.fullName;
+    const message = clientDetails.notes
+      ? `Hello, I'd like to book ${selectedService} on ${selectedDate} at ${selectedTime}. My name is ${clientName}. Notes: ${clientDetails.notes}`
+      : `Hello, I'd like to book ${selectedService} on ${selectedDate} at ${selectedTime}. My name is ${clientName}.`;
+    const whatsappUrl = `https://wa.me/2348173445612?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     setSubmitted(true);
-    toast.success(`Booking confirmed for ${clientDetails.fullName}! Opening WhatsApp...`);
+    toast.success(`Opening WhatsApp for ${clientName}...`);
   };
 
   return (
@@ -117,6 +117,19 @@ export default function BookingPage() {
             </div>
 
             <div className="pt-3 flex flex-wrap items-center gap-4">
+              <a
+                href={`https://wa.me/2348173445612?text=${encodeURIComponent(
+                  clientDetails.notes
+                    ? `Hello, I'd like to book ${selectedServiceObj?.title || 'Hair Styling'} on ${selectedDate} at ${selectedTime}. My name is ${clientDetails.fullName}. Notes: ${clientDetails.notes}`
+                    : `Hello, I'd like to book ${selectedServiceObj?.title || 'Hair Styling'} on ${selectedDate} at ${selectedTime}. My name is ${clientDetails.fullName}.`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white px-5 py-2.5 text-xs font-semibold shadow-xs transition-colors"
+              >
+                <span>Open in WhatsApp</span>
+                <span>→</span>
+              </a>
               <button
                 type="button"
                 onClick={() => setSubmitted(false)}
